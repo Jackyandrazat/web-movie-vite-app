@@ -38,7 +38,7 @@ function CardList() {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <div className="flex fleDetailFilmx-wrap justify-center gap-4">
       {/* Menggunakan map untuk membuat card berdasarkan data */}
       {cardData.map((card, index) => (
         <div key={index} className="card card-compact w-96 bg-base-100 shadow-xl">
@@ -47,7 +47,7 @@ function CardList() {
             <h2 className="card-title">{card.title}</h2>
             <p>{card.description}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Wacth Now</button>
+              <button className="btn btn-primary">Watch Now</button>
             </div>
           </div>
         </div>
