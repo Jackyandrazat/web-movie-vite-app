@@ -1,53 +1,49 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function CardList() {
-  // Data untuk card
-  const cardData = [
-    {
-      imageUrl: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      description: "If a dog chews shoes whose shoes does he choose?"
-    },
-    {
-      imageUrl: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      description: "If a dog chews shoes whose shoes does he choose?"
-    },
-    {
-      imageUrl: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      description: "If a dog chews shoes whose shoes does he choose?"
-    },
-    {
-      imageUrl: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      description: "If a dog chews shoes whose shoes does he choose?"
-    },
-    {
-      imageUrl: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      description: "If a dog chews shoes whose shoes does he choose?"
-    },
-    {
-      imageUrl: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-      title: "Shoes!",
-      description: "If a dog chews shoes whose shoes does he choose?"
-    },
-    // Tambahkan data lainnya jika diperlukan
-  ];
+  const [movies, setMovies] = useState([]);
+  const imageUrl = 'https://image.tmdb.org/t/p/w500/';
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const apiKey = "eb5a78158e1e2d97ce520530858f8910";
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+        );
+        setMovies(response.data.results);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.slice(0, maxLength) + "...";
+    } else {
+      return text;
+    }
+  };
 
   return (
-    <div className="flex fleDetailFilmx-wrap justify-center gap-4">
-      {/* Menggunakan map untuk membuat card berdasarkan data */}
-      {cardData.map((card, index) => (
-        <div key={index} className="card card-compact w-96 bg-base-100 shadow-xl">
-          <figure><img src={card.imageUrl} alt={card.title} /></figure>
-          <div className="card-body">
-            <h2 className="card-title">{card.title}</h2>
-            <p>{card.description}</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Watch Now</button>
+    <div className="flex flex-wrap justify-center gap-4">
+      {movies.map((movie, index) => (
+        <div key={index} className="card bg-gray-100 p-2 rounded-lg shadow-md" style={{ maxWidth: '250px' }}>
+          <figure>
+            <img src={imageUrl + movie.poster_path} alt={movie.title} className="w-full h-auto rounded-lg" />
+          </figure>
+          <div className="card-body mt-2">
+            <h2 className="card-title text-lg font-semibold">{movie.title}</h2>
+            <p className="text-sm mt-2">{truncateText(movie.overview, 150)}</p>
+            <div className="flex justify-end mt-4">
+              <a href="/filmlist/detail" className="btn btn-primary">
+                Watch Now
+              </a>
             </div>
           </div>
         </div>
