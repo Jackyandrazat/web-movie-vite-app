@@ -8,6 +8,7 @@ import {
 import './App.css'
 import Index from './pages/Index';
 import FilmList from './pages/FilmList';
+import DetailFilm from './pages/DetailFilm';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Index/>} />
           <Route path="/filmlist" element={<FilmList/>} />
+          <Route path="/filmlist/detail" element={<DetailFilm/>} />
         </Routes>
       </Router>
     </>
