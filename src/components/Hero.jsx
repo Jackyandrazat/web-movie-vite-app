@@ -35,15 +35,7 @@ function HeroFigure() {
         <div className="hero-content flex-col lg:flex-row">
           <img
             src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            className="max-w-sm rounded-lg shadow-2xl"
-          />
-          <img
-            src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            className="max-w-sm rounded-lg shadow-2xl"
-          />
-          <img
-            src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            className="max-w-sm rounded-lg shadow-2xl"
+            className="max-w-sm h-96 rounded-lg shadow-2xl"
           />
           <div>
             <h1 className="text-5xl font-bold">List of Interesting Films</h1>

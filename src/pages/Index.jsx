@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { Hero, HeroFigure } from "../components/Hero";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
+import TrendingMovies from "../components/TrendingMovie";
 
 function Index() {
   return (
@@ -11,7 +12,7 @@ function Index() {
       <Navbar />
       <Hero />
       <HeroFigure />
-      <Carousel />
+      <TrendingMovies />
       <Footer />
     </div>
   );
